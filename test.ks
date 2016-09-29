@@ -1,4 +1,3 @@
-wait 2.
 clearscreen.
 rcs on.
 print "Deorbiting" at (5,3).

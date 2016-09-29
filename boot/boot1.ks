@@ -1,3 +1,4 @@
+wait 3.
 set m to core:part:getmodule("kosProcessor").
 m:doevent("open terminal").
 print "Secondary core".
