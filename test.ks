@@ -7,7 +7,7 @@ print "Staged    " at (5,3).
 local ves is vessel("Minmus Explorer probe").
 until false
 {
-  SET ves:CONTROL:yaw TO 1.
+  lock steering to facing+r(180,0,180).
   print "Looking back    " at (5,3).
   wait 15.
   SET ves:CONTROL:NEUTRALIZE to True.
