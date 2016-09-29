@@ -1,4 +1,4 @@
-declare parameter node.
+declare parameter node is 1.
 // present orbit properties
 set ra to body:radius + apoapsis.         // Ap radius
 set rp to body:radius + periapsis.      // Pe radius
