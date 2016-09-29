@@ -1,0 +1,517 @@
+MODULES FOR PART NAMED probeCoreOcto
+LIST of 14 items:
+[0] = "ModuleCommand"
+[1] = "ModuleReactionWheel"
+[2] = "ModuleSAS"
+[3] = "ModuleCrewAssignment"
+[4] = "ModuleAGX"
+[5] = "TweakScale"
+[6] = "GeometryPartModule"
+[7] = "FARAeroPartModule"
+[8] = "FARPartModule"
+[9] = "KOSNameTag"
+[10] = "ModuleSPU"
+[11] = "ModuleRTAntennaPassive"
+[12] = "ModuleScienceExperiment"
+[13] = "ModuleTripLogger"
+MODULES FOR PART NAMED KAL9000
+LIST of 9 items:
+[0] = "kOSProcessor"
+[1] = "ModuleLight"
+[2] = "kOSLightModule"
+[3] = "ModuleAGX"
+[4] = "GeometryPartModule"
+[5] = "FARAeroPartModule"
+[6] = "FARPartModule"
+[7] = "KOSNameTag"
+[8] = "ModulekOSVoidAction"
+MODULES FOR PART NAMED mediumDishAntenna
+LIST of 9 items:
+[0] = "ModuleAnimateGeneric"
+[1] = "ModuleAnimateGeneric"
+[2] = "ModuleAGX"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+[7] = "ModuleRTAntenna"
+[8] = "ModuleSPUPassive"
+MODULES FOR PART NAMED RTShortAntenna1
+LIST of 8 items:
+[0] = "ModuleAGX"
+[1] = "GeometryPartModule"
+[2] = "FARAeroPartModule"
+[3] = "FARPartModule"
+[4] = "KOSNameTag"
+[5] = "ModuleRTAntenna"
+[6] = "ModuleSPUPassive"
+[7] = "ModuleRTDataTransmitter"
+MODULES FOR PART NAMED batteryBankMini
+LIST of 6 items:
+[0] = "ModuleAGX"
+[1] = "TweakScale"
+[2] = "GeometryPartModule"
+[3] = "FARAeroPartModule"
+[4] = "FARPartModule"
+[5] = "KOSNameTag"
+MODULES FOR PART NAMED batteryBankMini
+LIST of 6 items:
+[0] = "ModuleAGX"
+[1] = "TweakScale"
+[2] = "GeometryPartModule"
+[3] = "FARAeroPartModule"
+[4] = "FARPartModule"
+[5] = "KOSNameTag"
+MODULES FOR PART NAMED batteryBankMini
+LIST of 6 items:
+[0] = "ModuleAGX"
+[1] = "TweakScale"
+[2] = "GeometryPartModule"
+[3] = "FARAeroPartModule"
+[4] = "FARPartModule"
+[5] = "KOSNameTag"
+MODULES FOR PART NAMED SurveyScanner
+LIST of 9 items:
+[0] = "ModuleOrbitalSurveyor"
+[1] = "ModuleOrbitalScanner"
+[2] = "ModuleAnimationGroup"
+[3] = "ModuleAGX"
+[4] = "TweakScale"
+[5] = "GeometryPartModule"
+[6] = "FARAeroPartModule"
+[7] = "FARPartModule"
+[8] = "KOSNameTag"
+MODULES FOR PART NAMED 1x3SPanels
+LIST of 7 items:
+[0] = "ModuleDeployableSolarPanel"
+[1] = "ModuleAGX"
+[2] = "GeometryPartModule"
+[3] = "FARAeroPartModule"
+[4] = "FARPartModule"
+[5] = "KOSNameTag"
+[6] = "FNSolarPanelWasteHeatModule"
+MODULES FOR PART NAMED 1x3SPanels
+LIST of 7 items:
+[0] = "ModuleDeployableSolarPanel"
+[1] = "ModuleAGX"
+[2] = "GeometryPartModule"
+[3] = "FARAeroPartModule"
+[4] = "FARPartModule"
+[5] = "KOSNameTag"
+[6] = "FNSolarPanelWasteHeatModule"
+MODULES FOR PART NAMED 1x3SPanels
+LIST of 7 items:
+[0] = "ModuleDeployableSolarPanel"
+[1] = "ModuleAGX"
+[2] = "GeometryPartModule"
+[3] = "FARAeroPartModule"
+[4] = "FARPartModule"
+[5] = "KOSNameTag"
+[6] = "FNSolarPanelWasteHeatModule"
+MODULES FOR PART NAMED fuelLine
+LIST of 7 items:
+[0] = "CModuleLinkedMesh"
+[1] = "CModuleFuelLine"
+[2] = "ModuleAGX"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED miniFuelTank
+LIST of 7 items:
+[0] = "ModuleAGX"
+[1] = "ModuleFuelTanks"
+[2] = "TweakScale"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED miniFuelTank
+LIST of 7 items:
+[0] = "ModuleAGX"
+[1] = "ModuleFuelTanks"
+[2] = "TweakScale"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED MicroEngineB
+LIST of 8 items:
+[0] = "ModuleEnginesFX"
+[1] = "ModuleTestSubject"
+[2] = "ModuleAGX"
+[3] = "tjs_EngineLight"
+[4] = "GeometryPartModule"
+[5] = "FARAeroPartModule"
+[6] = "FARPartModule"
+[7] = "KOSNameTag"
+MODULES FOR PART NAMED smallRadialDecoupler
+LIST of 9 items:
+[0] = "ModuleAnchoredDecoupler"
+[1] = "ModuleToggleCrossfeed"
+[2] = "ModuleTestSubject"
+[3] = "ModuleAGX"
+[4] = "tjs_DecouplerLight"
+[5] = "GeometryPartModule"
+[6] = "FARAeroPartModule"
+[7] = "FARPartModule"
+[8] = "KOSNameTag"
+MODULES FOR PART NAMED strutCube
+LIST of 6 items:
+[0] = "ModuleAGX"
+[1] = "TweakScale"
+[2] = "GeometryPartModule"
+[3] = "FARAeroPartModule"
+[4] = "FARPartModule"
+[5] = "KOSNameTag"
+MODULES FOR PART NAMED probeCoreOcto
+LIST of 14 items:
+[0] = "ModuleCommand"
+[1] = "ModuleReactionWheel"
+[2] = "ModuleSAS"
+[3] = "ModuleCrewAssignment"
+[4] = "ModuleAGX"
+[5] = "TweakScale"
+[6] = "GeometryPartModule"
+[7] = "FARAeroPartModule"
+[8] = "FARPartModule"
+[9] = "KOSNameTag"
+[10] = "ModuleSPU"
+[11] = "ModuleRTAntennaPassive"
+[12] = "ModuleScienceExperiment"
+[13] = "ModuleTripLogger"
+MODULES FOR PART NAMED fairingSize2
+LIST of 7 items:
+[0] = "ModuleProceduralFairing"
+[1] = "ModuleTestSubject"
+[2] = "ModuleAGX"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED strutConnector
+LIST of 7 items:
+[0] = "CModuleLinkedMesh"
+[1] = "CModuleStrut"
+[2] = "ModuleAGX"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED strutConnector
+LIST of 7 items:
+[0] = "CModuleLinkedMesh"
+[1] = "CModuleStrut"
+[2] = "ModuleAGX"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED strutConnector
+LIST of 7 items:
+[0] = "CModuleLinkedMesh"
+[1] = "CModuleStrut"
+[2] = "ModuleAGX"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED strutConnector
+LIST of 7 items:
+[0] = "CModuleLinkedMesh"
+[1] = "CModuleStrut"
+[2] = "ModuleAGX"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED fuelTank2-2
+LIST of 7 items:
+[0] = "ModuleAGX"
+[1] = "ModuleFuelTanks"
+[2] = "TweakScale"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED fuelTank1-2
+LIST of 7 items:
+[0] = "ModuleAGX"
+[1] = "ModuleFuelTanks"
+[2] = "TweakScale"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED engineLargeSkipper
+LIST of 16 items:
+[0] = "ModuleEnginesFX"
+[1] = "ModuleJettison"
+[2] = "ModuleGimbal"
+[3] = "FXModuleAnimateThrottle"
+[4] = "ModuleAlternator"
+[5] = "ModuleTestSubject"
+[6] = "ModuleSurfaceFX"
+[7] = "ModuleAGX"
+[8] = "TweakScale"
+[9] = "ModuleJettison"
+[10] = "FXModuleLookAtConstraint"
+[11] = "tjs_EngineLight"
+[12] = "GeometryPartModule"
+[13] = "FARAeroPartModule"
+[14] = "FARPartModule"
+[15] = "KOSNameTag"
+MODULES FOR PART NAMED tailfin
+LIST of 6 items:
+[0] = "ModuleAGX"
+[1] = "TweakScale"
+[2] = "FARControllableSurface"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "KOSNameTag"
+MODULES FOR PART NAMED tailfin
+LIST of 6 items:
+[0] = "ModuleAGX"
+[1] = "TweakScale"
+[2] = "FARControllableSurface"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "KOSNameTag"
+MODULES FOR PART NAMED tailfin
+LIST of 6 items:
+[0] = "ModuleAGX"
+[1] = "TweakScale"
+[2] = "FARControllableSurface"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "KOSNameTag"
+MODULES FOR PART NAMED RC.radial
+LIST of 8 items:
+[0] = "RealChuteModule"
+[1] = "ProceduralChute"
+[2] = "ModuleTestSubject"
+[3] = "ModuleAGX"
+[4] = "GeometryPartModule"
+[5] = "FARAeroPartModule"
+[6] = "FARPartModule"
+[7] = "KOSNameTag"
+MODULES FOR PART NAMED RC.radial
+LIST of 8 items:
+[0] = "RealChuteModule"
+[1] = "ProceduralChute"
+[2] = "ModuleTestSubject"
+[3] = "ModuleAGX"
+[4] = "GeometryPartModule"
+[5] = "FARAeroPartModule"
+[6] = "FARPartModule"
+[7] = "KOSNameTag"
+MODULES FOR PART NAMED RC.radial
+LIST of 8 items:
+[0] = "RealChuteModule"
+[1] = "ProceduralChute"
+[2] = "ModuleTestSubject"
+[3] = "ModuleAGX"
+[4] = "GeometryPartModule"
+[5] = "FARAeroPartModule"
+[6] = "FARPartModule"
+[7] = "KOSNameTag"
+MODULES FOR PART NAMED RC.radial
+LIST of 8 items:
+[0] = "RealChuteModule"
+[1] = "ProceduralChute"
+[2] = "ModuleTestSubject"
+[3] = "ModuleAGX"
+[4] = "GeometryPartModule"
+[5] = "FARAeroPartModule"
+[6] = "FARPartModule"
+[7] = "KOSNameTag"
+MODULES FOR PART NAMED linearRcs
+LIST of 8 items:
+[0] = "ModuleRCS"
+[1] = "ModuleAGX"
+[2] = "RcsSounds"
+[3] = "TweakScale"
+[4] = "GeometryPartModule"
+[5] = "FARAeroPartModule"
+[6] = "FARPartModule"
+[7] = "KOSNameTag"
+MODULES FOR PART NAMED linearRcs
+LIST of 8 items:
+[0] = "ModuleRCS"
+[1] = "ModuleAGX"
+[2] = "RcsSounds"
+[3] = "TweakScale"
+[4] = "GeometryPartModule"
+[5] = "FARAeroPartModule"
+[6] = "FARPartModule"
+[7] = "KOSNameTag"
+MODULES FOR PART NAMED linearRcs
+LIST of 8 items:
+[0] = "ModuleRCS"
+[1] = "ModuleAGX"
+[2] = "RcsSounds"
+[3] = "TweakScale"
+[4] = "GeometryPartModule"
+[5] = "FARAeroPartModule"
+[6] = "FARPartModule"
+[7] = "KOSNameTag"
+MODULES FOR PART NAMED KAL9000
+LIST of 9 items:
+[0] = "kOSProcessor"
+[1] = "ModuleLight"
+[2] = "kOSLightModule"
+[3] = "ModuleAGX"
+[4] = "GeometryPartModule"
+[5] = "FARAeroPartModule"
+[6] = "FARPartModule"
+[7] = "KOSNameTag"
+[8] = "ModulekOSVoidAction"
+MODULES FOR PART NAMED batteryPack
+LIST of 6 items:
+[0] = "ModuleAGX"
+[1] = "TweakScale"
+[2] = "GeometryPartModule"
+[3] = "FARAeroPartModule"
+[4] = "FARPartModule"
+[5] = "KOSNameTag"
+MODULES FOR PART NAMED batteryPack
+LIST of 6 items:
+[0] = "ModuleAGX"
+[1] = "TweakScale"
+[2] = "GeometryPartModule"
+[3] = "FARAeroPartModule"
+[4] = "FARPartModule"
+[5] = "KOSNameTag"
+MODULES FOR PART NAMED strutConnector
+LIST of 7 items:
+[0] = "CModuleLinkedMesh"
+[1] = "CModuleStrut"
+[2] = "ModuleAGX"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED smallRadialDecoupler
+LIST of 9 items:
+[0] = "ModuleAnchoredDecoupler"
+[1] = "ModuleToggleCrossfeed"
+[2] = "ModuleTestSubject"
+[3] = "ModuleAGX"
+[4] = "tjs_DecouplerLight"
+[5] = "GeometryPartModule"
+[6] = "FARAeroPartModule"
+[7] = "FARPartModule"
+[8] = "KOSNameTag"
+MODULES FOR PART NAMED strutCube
+LIST of 6 items:
+[0] = "ModuleAGX"
+[1] = "TweakScale"
+[2] = "GeometryPartModule"
+[3] = "FARAeroPartModule"
+[4] = "FARPartModule"
+[5] = "KOSNameTag"
+MODULES FOR PART NAMED strutConnector
+LIST of 7 items:
+[0] = "CModuleLinkedMesh"
+[1] = "CModuleStrut"
+[2] = "ModuleAGX"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED radialRCSTank
+LIST of 7 items:
+[0] = "ModuleAGX"
+[1] = "ModuleFuelTanks"
+[2] = "TweakScale"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED radialRCSTank
+LIST of 7 items:
+[0] = "ModuleAGX"
+[1] = "ModuleFuelTanks"
+[2] = "TweakScale"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED RadialLFO
+LIST of 5 items:
+[0] = "ModuleAGX"
+[1] = "GeometryPartModule"
+[2] = "FARAeroPartModule"
+[3] = "FARPartModule"
+[4] = "KOSNameTag"
+MODULES FOR PART NAMED RadialLFO
+LIST of 5 items:
+[0] = "ModuleAGX"
+[1] = "GeometryPartModule"
+[2] = "FARAeroPartModule"
+[3] = "FARPartModule"
+[4] = "KOSNameTag"
+MODULES FOR PART NAMED RadialLFO
+LIST of 5 items:
+[0] = "ModuleAGX"
+[1] = "GeometryPartModule"
+[2] = "FARAeroPartModule"
+[3] = "FARPartModule"
+[4] = "KOSNameTag"
+MODULES FOR PART NAMED RadialLFO
+LIST of 5 items:
+[0] = "ModuleAGX"
+[1] = "GeometryPartModule"
+[2] = "FARAeroPartModule"
+[3] = "FARPartModule"
+[4] = "KOSNameTag"
+MODULES FOR PART NAMED strutCube
+LIST of 6 items:
+[0] = "ModuleAGX"
+[1] = "TweakScale"
+[2] = "GeometryPartModule"
+[3] = "FARAeroPartModule"
+[4] = "FARPartModule"
+[5] = "KOSNameTag"
+MODULES FOR PART NAMED strutCube
+LIST of 6 items:
+[0] = "ModuleAGX"
+[1] = "TweakScale"
+[2] = "GeometryPartModule"
+[3] = "FARAeroPartModule"
+[4] = "FARPartModule"
+[5] = "KOSNameTag"
+MODULES FOR PART NAMED 45DegreeRCS
+LIST of 7 items:
+[0] = "ModuleRCS"
+[1] = "ModuleAGX"
+[2] = "RcsSounds"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
+MODULES FOR PART NAMED strutCube
+LIST of 6 items:
+[0] = "ModuleAGX"
+[1] = "TweakScale"
+[2] = "GeometryPartModule"
+[3] = "FARAeroPartModule"
+[4] = "FARPartModule"
+[5] = "KOSNameTag"
+MODULES FOR PART NAMED strutCube
+LIST of 6 items:
+[0] = "ModuleAGX"
+[1] = "TweakScale"
+[2] = "GeometryPartModule"
+[3] = "FARAeroPartModule"
+[4] = "FARPartModule"
+[5] = "KOSNameTag"
+MODULES FOR PART NAMED 45DegreeRCS
+LIST of 7 items:
+[0] = "ModuleRCS"
+[1] = "ModuleAGX"
+[2] = "RcsSounds"
+[3] = "GeometryPartModule"
+[4] = "FARAeroPartModule"
+[5] = "FARPartModule"
+[6] = "KOSNameTag"
