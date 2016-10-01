@@ -28,28 +28,29 @@ until done
 		lock wheelsteering to alpha.
 		if velocity:surface:mag<speed
 		{
-			if vec_angle >20
-			{
-				lock wheelthrottle to 0.2.
-				brakes off.
-			}
-			else
-			{
-				set runmode to "Accelerating".
+			// if vec_angle >20
+			// {
+			// 	lock wheelthrottle to 0.2.
+			// 	brakes off.
+			// 	set runmode to "Accelerating slowly".
+			// }
+			// else
+			// {
+				set runmode to "Accelerating        ".
 				lock wheelthrottle to 1.
 				brakes off.
-			}
+			// }
 		}
 		else
 		{
-			set runmode to "Too fast".
+			set runmode to "Too fast               ".
 			brakes on.
 			lock wheelthrottle to 0.
 		}
 	}
 	else
 	{
-		set runmode to "done".
+		set runmode to "Done                  ".
 		unlock wheelsteering.
 		brakes on.
 		lock wheelthrottle to 0.

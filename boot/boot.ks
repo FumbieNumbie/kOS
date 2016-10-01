@@ -1,7 +1,7 @@
 //bootloader
 set m to core:part:getmodule("kosProcessor").
 m:doevent("open terminal").
-if body:name = "Kerbin"
+if body = Kerbin
 {
   if alt:radar < 100
   {
