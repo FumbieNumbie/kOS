@@ -24,11 +24,11 @@ function fairing_deploy
 	}
 }
 
-local cpu is ship:partstagged("Secondary").
-for mod in cpu
-{
-	mod:getmodule("kOSProcessor"):deactivate().
-}
+// local cpu is ship:partstagged("Secondary").
+// for mod in cpu
+// {
+// 	mod:getmodule("kOSProcessor"):deactivate().
+// }
 
 
 clearscreen.
@@ -38,7 +38,7 @@ set dETA to 0.
 set cETA to ETA:apoapsis.
 set TVAL to 0.
 set dTVAL to 0.05.
-
+set alpha to 0.
 set st to 0.
 set delta to 0.
 set mode to 0.
@@ -175,11 +175,11 @@ if ship:periapsis < ship:apoapsis-300
 	run circle(1).
 
 }
-local cpu is ship:partstagged("Secondary").
-for mod in cpu
-{
-	mod:getmodule("kOSProcessor"):activate().
-}
+// local cpu is ship:partstagged("Secondary").
+// for mod in cpu
+// {
+// 	mod:getmodule("kOSProcessor"):activate().
+// }
 panels on.
 set ship:control:pilotmainthrottle to 0.
 // runpath("0:/library/standby.ks").

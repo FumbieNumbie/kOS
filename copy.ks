@@ -31,7 +31,8 @@ set ScriptList to list(
   "circle.ks",
   "warpfor.ks",
   "go.ks",
-  "connection.ks").
+  "connection.ks",
+  "delete_all.ks").
 for f in ScriptList
 {
   download(f).

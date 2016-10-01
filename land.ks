@@ -137,7 +137,7 @@ until status = "landed"
   {
     if altRadar > 500
     {
-    
+
       if BurnT/Ti > 1
       {
 
@@ -152,8 +152,15 @@ until status = "landed"
     }
     if altRadar < 500
     {
-      hover_pid(-15).
-      lock th to min(pid:update(time:seconds, ship:verticalspeed) / cos(vang(up:vector, ship:facing:forevector)),1).
+      if ship:groundspeed > 5
+      {
+        lock th to max(0, min((BurnT/ Ti), 1)).
+      }
+      else
+      {
+        hover_pid(-15).
+        lock th to min(pid:update(time:seconds, ship:verticalspeed) / cos(vang(up:vector, ship:facing:forevector)),1).
+      }
       wait 0.1.
       print "<500                        " at (5,15).
     }
@@ -171,9 +178,17 @@ until status = "landed"
       }
       else
       {
-        hover_pid(-1).
+        if ship:groundspeed > 5
+        {
+          hover_pid(0).
+          lock steering to up:vector-ship:velocity:surface:normalized.
+        }
+        else
+        {
+          hover_pid(-1).
+          lock steering to up:vector-ship:velocity:surface:normalized/4.
+        }
         lock th to min(pid:update(time:seconds, ship:verticalspeed) / cos(vang(up:vector, ship:facing:forevector)),1).
-        lock steering to up:vector-ship:velocity:surface:normalized/4.
         print "<40 - 2                              " at (5,15).
       }
     }
@@ -203,7 +218,7 @@ lock steering to up.
 SET SHIP:CONTROL:PILOTMAINTHROTTLE TO 0.
 ship_stats().
 set fuelmass to (stage:LIQUIDFUEL+stage:oxidizer)*0.005.
-set stageDV_left stageDV.
+set stageDV_left to stageDV.
 clearscreen.
 print "Looks landed to me." at (3,2).
 Print "Used deltaV: "+ round((s_DV - stageDV_left),1) at (3,3).

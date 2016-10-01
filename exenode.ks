@@ -38,9 +38,9 @@ print "Burn duration: " + round(dob,2) + "s".
 
 
 
-if nextnode:eta-dob/2 < 15
+if nextnode:eta-dob/2 > 15
 {
-	run once warpfor(nextnode:eta-dob/2-11).
+	run warpfor(nextnode:eta-dob/2-11).
 }
 
 wait until nd:eta <= dob/2+1.
