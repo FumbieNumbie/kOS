@@ -1,8 +1,3 @@
-declare parameter angle.
-declare parameter distance.
-declare parameter speed.
-CLEARVECDRAWS().
-clearscreen.
 set done to false.
 local west is vcrs(north:vector, -up:vector).
 // local dir is (cos(angle*constant:pi/180)*north:vector+sin(angle*constant:pi/180)*west).
@@ -17,5 +12,3 @@ vecdraw(v(0,0,0),
         10,
         true,
         0.2).
-
- 
