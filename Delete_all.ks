@@ -1,4 +1,4 @@
-switch to 0.
+switch to 1.
 set ScriptList to list(
   "test.ks",
   "launch.ks",
@@ -14,3 +14,5 @@ for f in ScriptList
 {
   deletepath("1:/"+f+"").
 }
+list files.
+switch to 0.

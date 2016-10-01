@@ -1,14 +1,19 @@
+declare parameter angle.
+declare parameter distance.
+declare parameter speed.
+CLEARVECDRAWS().
 clearscreen.
-rcs on.
-print "Deorbiting" at (5,3).
-stage.
-print "Staged    " at (5,3).
+set done to false.
+local west is vcrs(north:vector, -up:vector).
+// local dir is (cos(angle*constant:pi/180)*north:vector+sin(angle*constant:pi/180)*west).
+local dir is (ship:facing:vector).
+// sin(angle)*north:vector+cos(angle)*west.
 
-
-print "Looking back    " at (5,3).
-
-wait 2.
-set ship:CONTROL:yaw to 1.
-wait 5.
-set ship:CONTROL:yaw to 0.
-set ship:control:pilotmainthrottle to 1.
+print dir.
+vecdraw(v(0,0,0),
+        dir,
+        rgb(0,100,50),
+        "",
+        10,
+        true,
+        0.2).
