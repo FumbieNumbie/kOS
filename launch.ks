@@ -1,4 +1,5 @@
 declare parameter AP.
+parameter Deorbit_1st is 0.
 set tarAP to AP*1000.
 SAS off.
 RCS off.
@@ -24,12 +25,14 @@ function fairing_deploy
 	}
 }
 
-// local cpu is ship:partstagged("Secondary").
-// for mod in cpu
-// {
-// 	mod:getmodule("kOSProcessor"):deactivate().
-// }
-
+if Deorbit_1st = 1
+{
+	local cpu is ship:partstagged("Secondary").
+	for mod in cpu
+	{
+		mod:getmodule("kOSProcessor"):deactivate().
+	}
+}
 
 clearscreen.
 set cAP to ship:apoapsis.
@@ -175,11 +178,14 @@ if ship:periapsis < ship:apoapsis-300
 	run circle(1).
 
 }
-// local cpu is ship:partstagged("Secondary").
-// for mod in cpu
-// {
-// 	mod:getmodule("kOSProcessor"):activate().
-// }
+if Deorbit_1st = 1
+{
+	local cpu is ship:partstagged("Secondary").
+	for mod in cpu
+	{
+		mod:getmodule("kOSProcessor"):activate().
+	}
+}
 panels on.
 set ship:control:pilotmainthrottle to 0.
 // runpath("0:/library/standby.ks").
