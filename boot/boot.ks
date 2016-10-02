@@ -38,7 +38,7 @@ if body = Kerbin
       local z is 0.
       on ag1 {set z to 1. }
       on ag10 {set z to 0. }
-      print "To enable communications press 1.  "+ AP at (1,5).
+      print "To enable communications press 1.  " at (1,5).
       set connection to z.
     }
     if AP = 0 {set AP to 75.}
