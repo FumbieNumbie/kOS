@@ -28,14 +28,14 @@ until done
 		lock wheelsteering to alpha.
 		if velocity:surface:mag<speed
 		{
-			// if vec_angle >20
-			// {
-			// 	lock wheelthrottle to 0.2.
-			// 	brakes off.
-			// 	set runmode to "Accelerating slowly".
-			// }
-			// else
-			// {
+			if vec_angle >20 and ship:verticalspeed < -speed*sin(vec_angle)
+			{
+				lock wheelthrottle to 0.2.
+				brakes off.
+				set runmode to "Accelerating slowly".
+			}
+			else
+			{
 				set runmode to "Accelerating        ".
 				lock wheelthrottle to 1.
 				brakes off.
