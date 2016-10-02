@@ -34,10 +34,6 @@ lock shipLatLang to ship:geoposition.
 lock surfElev to shipLatLang:terrainheight.
 lock altRadar to altitude-surfElev.
 lock v to ship:velocity:surface:mag.
-// set engISP to 0.
-// set stageDV to g*engISP * ln(ship:mass / (ship:mass - fuelmass)).
-// set enThrust to 0.
-// set acc to 0.
 
 ship_stats().
 set s_DV to stageDV.
@@ -74,7 +70,6 @@ set s_DV to stageDV.
 //   RETURN BurnT.
 //   Return Ti.
 // }
-
 // function imp_loc1
 // {
 //   Impact().
