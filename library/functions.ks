@@ -71,9 +71,7 @@ function Impact
 function imp_loc1
 {
   Impact().
-
-  set impact_loc to body:geopositionof(positionat(ship,time:seconds+Ti)).
-
+  set impact_loc to ship:position + ship:velocity:surface*Ti.
   return impact_loc.
 }
 
@@ -90,6 +88,39 @@ function hover_pid
   set pid to pidloop(2.7, 4.4, 0.12, 0, 1).
   set pid:setpoint to setpoint.
 }
+
+function pr_slope
+{
+  local east is vcrs(north:vector, up:vector).
+  local a is body:geopositionof(impact_loc + 5 * north:vector).
+  local b is body:geopositionof(impact_loc - 5 * north:vector + 5 * east).
+  local c is body:geopositionof(impact_loc - 5 * north:vector - 5 * east).
+
+
+  local a_vec is a:altitudeposition(a:terrainheight).
+  local b_vec is b:altitudeposition(b:terrainheight).
+  local c_vec is c:altitudeposition(c:terrainheight).
+
+  return vcrs(c_vec - a_vec, b_vec - a_vec).
+
+  set a_draw to vecdraw(a_vec,
+                  up:vector,
+                  red,"",1,true).
+  set b_draw to vecdraw(b_vec,
+                  up:vector,
+                  red,"",1,true).
+  set c_draw to vecdraw(c_vec,
+                  up:vector,
+                  red,"",1,true).
+  set normal to vcrs(c_vec - a_vec, b_vec - a_vec).
+  set visual_normal to vecdraw(impact_loc:geoposition:ALTITUDEPOSITION(impact_loc:geoposition:TERRAINHEIGHT),
+                              normal,
+                              green,"",10,true).
+  lock angle to vang(normal,up:vector).
+
+  return angle.
+}
+
 
 function slope
 {
