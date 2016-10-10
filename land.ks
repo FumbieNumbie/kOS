@@ -125,12 +125,12 @@ until status = "landed"
   imp_loc1().
   slope().
   // Print "Now I'm here              " at (5,15).
-
+  set adv_altRadar to altitude - imp_loc1():geoposition:terrainheight.
   on ag5 {lock steering to up.}
   on ag4 {lock steering to -ship:velocity:surface.}
   if V0<0
   {
-    if altRadar > 500
+    if adv_altRadar > 500
     {
 
       if BurnT/Ti > 1
@@ -145,7 +145,7 @@ until status = "landed"
       }
 
     }
-    if altRadar < 500
+    if adv_altRadar < 500
     {
       if ship:groundspeed > 5
       {
@@ -159,7 +159,7 @@ until status = "landed"
       wait 0.1.
       print "<500                        " at (5,15).
     }
-    if altRadar < 40
+    if adv_altRadar < 40
     {
       if slope() > 5
       {
