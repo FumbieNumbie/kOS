@@ -24,6 +24,7 @@ if body = Kerbin
       on ag9 {set x to 9. set AP to 10*AP + x.}
       on ag10 {set x to 0. set AP to 10*AP + x.}
       print "Enter altitude, km "+ AP at (1,5).
+      print "Or just toggle SAS to orbit at 75km" at (1,6).
     }
     until rcs
     {
@@ -31,6 +32,7 @@ if body = Kerbin
       on ag1 {set y to 1.}
       on ag10 {set y to 0.}
       print "To fight Kessler syndrom press 1. " at (1,5).
+      print "Or just toggle RCS. " at (1,6).
       set NoKessler to y.
     }
     until throttle > 0.9
@@ -39,10 +41,11 @@ if body = Kerbin
       on ag1 {set z to 1. }
       on ag10 {set z to 0. }
       print "To enable communications press 1.  " at (1,5).
+      print "Or just hit the floor" at (1,6).
       set connection to z.
     }
     if AP = 0 {set AP to 75.}
-    runpath("1:/launch.ks",AP,NoKessler,connection).
+    runpath("1:/launch.ks", AP, NoKessler, connection).
   }
 }
 else{
