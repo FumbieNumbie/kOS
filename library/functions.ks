@@ -115,7 +115,7 @@ function pr_slope
   set normal to vcrs(c_vec - a_vec, b_vec - a_vec).
   set visual_normal to vecdraw(impact_loc:geoposition:ALTITUDEPOSITION(impact_loc:geoposition:TERRAINHEIGHT),
                               normal,
-                              green,"",10,true).
+                              RGBA(0,150,80,0.7),"",10,true).
   lock angle to vang(normal,up:vector).
 
   return angle.
