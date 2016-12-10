@@ -42,7 +42,7 @@ function twr_control
 	set engTH to 0.																//close to optimal fot air efficiency
 	for eng in engineList
 	{
-		if maxthrust > 1.35
+		if maxthrust > 1.35 and eng:flameout = false
 		{
 			set eng:thrustlimit to (k*9.81*ship:mass/maxthrust)*100.
 			set engTH to eng:thrustlimit.
@@ -89,7 +89,7 @@ until false
 			if altitude < 12000
 			{
 				lock alpha to 45+45*(1-(ship:altitude/(12000))).
-				twr_control(1.4).
+				twr_control(1.45).
 				set mode to 1.
 
 			}
