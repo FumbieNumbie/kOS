@@ -125,7 +125,7 @@ until status = "landed"
   imp_loc1().
   slope().
   // Print "Now I'm here              " at (5,15).
-  set adv_altRadar to altitude - imp_loc1():geoposition:terrainheight.
+  set adv_altRadar to altitude - body:geopositionof(imp_loc1()):terrainheight.
   on ag5 {lock steering to up.}
   on ag4 {lock steering to -ship:velocity:surface.}
   if V0<0

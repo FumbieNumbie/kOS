@@ -3,20 +3,27 @@ set nd to nextnode.
 clearscreen.
 print "T+" + round(missiontime) + " Node in: " + round(nd:eta) + ", DeltaV: " + round(nd:deltav:mag) at (5,5).
 set engISP to 0.
-list engines in engineList.
-for eng in engineList
-{
-	set engISP to engISP + eng:maxthrust / maxthrust * eng:isp. //average ISP For all active engines
+function calculations{
+	list engines in engineList.
+	for eng in engineList
+	{
+		set eng:thrustlimit to 100.
+		set engISP to engISP + eng:maxthrust / maxthrust * eng:isp. //average ISP For all active engines
+	}
+	// log "engISP: " + engISP to log.txt.
+	set g to 9.80665.
+	set fuelmass to (stage:LIQUIDFUEL+stage:oxidizer)*0.005.
+	set stageDV to g*engISP * ln(ship:mass / (ship:mass - fuelmass)). //calculating stage delta V.
+	set dm to ship:mass-ship:mass/constant:e^(nd:deltav:mag/(g*engISP)).//this is derived from the formula above,
+	// but in this case for deltaV of the node, not the whole stage.
+	set massFlowRate to maxthrust / (g*engISP).     // how fast I'm loosing mass via throwing fuel away.
+	set dob to dm/massFlowRate.		//duration of the burn, fuel flow rate method.
 }
-// log "engISP: " + engISP to log.txt.
-set g to 9.80665.
-set fuelmass to (stage:LIQUIDFUEL+stage:oxidizer)*0.005.
-set stageDV to g*engISP * ln(ship:mass / (ship:mass - fuelmass)). //calculating stage delta V.
-set dm to ship:mass-ship:mass/constant:e^(nd:deltav:mag/(g*engISP)).//this is derived from the formula above,
-// but in this case for deltaV of the node, not the whole stage.
-set massFlowRate to maxthrust / (g*engISP).     // how fast I'm loosing mass via throwing fuel away.
-set dob to dm/massFlowRate.		//duration of the burn, fuel flow rate method.
-
+calculations().
+if stageDV/nd:deltaV <0.9{
+		stage.
+		calculations().
+}
 sas off.
 
 set tset to 0.
