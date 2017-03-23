@@ -24,12 +24,14 @@ runpath("0:/library/main_functions.ks").
 
 set ScriptList to list(
   "test",
+  "land",
   "launch",
   "aponode",
   "perinode",
   "exenode",
   "circle",
   "warpfor",
+  "transfer",
   "deleteall").
 for f in ScriptList
 {

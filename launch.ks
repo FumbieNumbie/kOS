@@ -67,16 +67,16 @@ lock TVAL to 1.
 Print "Launch!".
 wait 1.
 list engines in engineList.
-for eng in engineList
+for eng in engineList{
 if eng:ignition = false
 {
 	stage.
-	break.
+}
 }
 clearscreen.
 
 lock steering to up + R(0,0,-90).
-wait 2.
+
 
 until false
 {
