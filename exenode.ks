@@ -33,7 +33,7 @@ function calculations{
 	set dob to dm/massFlowRate.		//duration of the burn, fuel flow rate method.
 }
 calculations().
-if stageDV/node1:deltaV:mag <0.5{
+if stageDV/node1:deltaV:mag <0.4{
 		stage.
 		calculations().
 }

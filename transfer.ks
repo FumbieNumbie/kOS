@@ -65,4 +65,4 @@ wait until periapsis < 14000.
 unlock steering.
 unlock throttle.
 SET SHIP:CONTROL:PILOTMAINTHROTTLE TO 0.
-// runpath("1:/circle.ks", 0).
+runpath("1:/circle.ks", 0).

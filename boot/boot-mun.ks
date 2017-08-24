@@ -5,7 +5,7 @@ set terminal:WIDTH to 35.
 set terminal:HEIGHT to 21.
 if ship:status = "PRELAUNCH"{
   runpath("0:/copy.ks").
-  runpath("0:/launch.ks",73,0,0).
+  runpath("0:/launch.ks",72,0,0).
 }
 wait 3.
 if body:name = "kerbin"{

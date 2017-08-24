@@ -1,7 +1,7 @@
 runpath("0:/copy.ks").
 if ship:status = "PRELAUNCH"{
 
-runpath("1:/launch.ks", 74, 0, 0).
+runpath("1:/launch.ks", 72, 0, 0).
 }
 lock throttle to 0.
 wait 10.

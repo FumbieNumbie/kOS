@@ -6,7 +6,7 @@ SAS off.
 RCS off.
 
 set throttle to 0. //Throttle is a decimal from 0.0 to 1.0
-gear off.
+
 function fairing_deploy
 {
 	local f is ship:partstagged("fairing").
@@ -63,16 +63,30 @@ set st to 0.
 set delta to 0.
 set mode to 0.
 //Launch----------------------------------------------------------------------
-lock TVAL to 1.
+set TVAL to 1.
 Print "Launch!".
 wait 1.
 list engines in engineList.
 for eng in engineList{
-if eng:ignition = false
+	if eng:ignition = false
+	{
+		stage.
+		// gear off.
+	}
+}
+// For stage recovery
+// set check to false.
+set startingFuel to stage:liquidfuel.
+set stNumber to stage:number.
+if ship:partstagged("Secondary"):length <> 0
 {
-	stage.
+	local cpu is ship:partstagged("Secondary").
+	for mod in cpu
+	{
+		mod:getmodule("kOSProcessor"):deactivate().
+	}
 }
-}
+//
 clearscreen.
 
 lock steering to up + R(0,0,-90).
@@ -82,7 +96,7 @@ until false
 {
 	if ship:apoapsis < tarAP
 	{
-		lock TVAL to 1.
+		set TVAL to 1.
 		if altitude < 65000
 		{
 			lock steering to heading(90,alpha).
@@ -111,22 +125,43 @@ until false
 	}
 	else
 	{
-		lock TVAL to 0.
+		set TVAL to 0.
 	}
 	if mode = 3
 	{
-	lock TVAL to 0.
+	set TVAL to 0.
 	}
 
 // Staging
-
+// Last stage
+	if ship:partstagged("Secondary"):length <> 0
+	{
+		if stage:number = stNumber
+		{
+			if stage:liquidfuel < 0.2 * startingFuel
+			{
+				// set check to true.
+				local cpu is ship:partstagged("Secondary").
+				for mod in cpu
+				{
+					mod:getmodule("kOSProcessor"):activate().
+					set TVAL to 0.
+					wait 0.5.
+					stage.
+					wait 2.
+					break.
+				}
+			}
+		}
+	}
+// Every other stage
 	list engines in engineList.
 	for eng in engineList
 	if eng:flameout
 	{
-		lock TVAL to 0.
+		set TVAL to 0.
 		stage.
-		wait 2.
+		wait 3.
 		break.
 	}
 
@@ -146,7 +181,9 @@ until false
 		rcs on.
 		break.
 	}
-	//print "engISP      "  + engISP +"      " at (5,3).
+	// print "Stage numbers      "  + stNumber +" "+ stage:number +"      " at (5,3).
+	// print "check      "  + check+"      " at (5,1).
+	// print "Fuel      "  + startingFuel +" "+ stage:liquidfuel +"      " at (5,3).
 	print "MODE:       " + mode + "      " at (5,4).
 	print "ALTITUDE:   " + round(SHIP:ALTITUDE) + "      " at (5,5).
 	print "APOAPSIS:   " + round(SHIP:APOAPSIS) + "      " at (5,6).
@@ -158,11 +195,11 @@ until false
 }
 if connection = 1
 {
-	runpath("1:/connection.ks").
+	runpath("0:/connection.ks").
 }
 if ship:periapsis < ship:apoapsis-300
 {
-	run circle(1).
+	runpath(circle.ks, 1).
 
 }
 if NoKessler = 1

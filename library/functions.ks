@@ -73,8 +73,8 @@ lock burnDist to Real_burn_time*maxa. // Maximum distance that will be covered w
 
 
 //Impact location prediction----------------------------------------------------
-set impact_loc to ship:position.
-set impact_geoposition to body:geopositionof(impact_loc).
+// set impact_loc to ship:position.
+// set impact_geoposition to body:geopositionof(impact_loc).
 // if altRadar>20
 // {
 //
@@ -85,8 +85,7 @@ set impact_geoposition to body:geopositionof(impact_loc).
 //   }
 // }
 // else{
-  lock impact_loc to ship:position + ship:velocity:surface * impact().
-  lock impact_geoposition to body:geopositionof(impact_loc).
+
 // }
 
 
