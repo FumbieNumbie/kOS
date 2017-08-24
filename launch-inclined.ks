@@ -48,7 +48,7 @@ function twr_control
 			set engTH to eng:thrustlimit.
 		}
 	}
-	print "Engine thrust is at " + round(engTH) + "%  " at (5,2).
+	print "Engine thrust is at " + round(engTH) + "%" at (5,2).
 }
 
 clearscreen.
@@ -85,7 +85,7 @@ until false
 		lock TVAL to 1.
 		if altitude < 65000
 		{
-			lock steering to heading(90,alpha).
+			lock steering to heading(180,alpha).
 			if altitude < 12000
 			{
 				lock alpha to 45+45*(1-(ship:altitude/(12000))).
@@ -121,7 +121,9 @@ until false
 // Staging
 
 	list engines in engineList.
+
 	for eng in engineList
+
 	if eng:flameout
 	{
 		lock TVAL to 0.

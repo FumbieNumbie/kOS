@@ -44,11 +44,16 @@ function twr_control
 	{
 		if maxthrust > 1.35 and eng:flameout = false
 		{
-			set eng:thrustlimit to (k*9.81*ship:mass/max(0.001, maxthrust))*100.
+			set eng:thrustlimit to (k*9.81*ship:mass/maxthrust)*100.
 			set engTH to eng:thrustlimit.
 		}
 	}
-	print "Engine thrust is at " + round(engTH) + "%  " at (5,2).
+	print "Engine thrust is at " + round(engTH) + "%" at (5,2).
+}
+
+function attitude{
+		lock alpha to 180-90*(1-(ship:altitude/(ap*1000)))^2.
+		return alpha.
 }
 
 clearscreen.
@@ -58,7 +63,7 @@ set dETA to 0.
 set cETA to ETA:apoapsis.
 set TVAL to 0.
 set dTVAL to 0.05.
-set alpha to 0.
+
 set st to 0.
 set delta to 0.
 set mode to 0.
@@ -67,16 +72,16 @@ lock TVAL to 1.
 Print "Launch!".
 wait 1.
 list engines in engineList.
-for eng in engineList{
+for eng in engineList
 if eng:ignition = false
 {
 	stage.
-}
+	break.
 }
 clearscreen.
 
 lock steering to up + R(0,0,-90).
-
+wait 2.
 
 until false
 {
@@ -85,10 +90,11 @@ until false
 		lock TVAL to 1.
 		if altitude < 65000
 		{
+			attitude().
 			lock steering to heading(90,alpha).
 			if altitude < 12000
 			{
-				lock alpha to 45+45*(1-(ship:altitude/(12000))).
+
 				twr_control(1.45).
 				set mode to 1.
 
@@ -96,7 +102,6 @@ until false
 			else if 12000 < altitude and altitude < 20000
 			{
 				twr_control(2.7).
-				lock alpha to max(5,45*(1-((ship:altitude-12000)/(70000)))).
 				set mode to 2.
 			}
 			else if altitude > 20000
@@ -121,7 +126,9 @@ until false
 // Staging
 
 	list engines in engineList.
+
 	for eng in engineList
+
 	if eng:flameout
 	{
 		lock TVAL to 0.

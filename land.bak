@@ -1,0 +1,163 @@
+sas off.
+rcs on.
+gear on.
+clearscreen.
+SET SHIP:CONTROL:PILOTMAINTHROTTLE TO 0.
+runpath("0:/library/functions.ks").
+
+CLEARVECDRAWS().
+
+// CONTROL VARIABLES BLOCK -----------------------------------------------------
+
+
+set th to 0.
+
+// NATURAL VARIABLES BLOCK -----------------------------------------------------
+
+SET g TO body:MU / (ship:altitude+body:RADIUS)^2.
+set a to 0.
+
+
+lock centr_acc to abs(ship:groundspeed)/(body:RADIUS+altitude).
+lock downwardAcceleration to g - centr_acc.
+
+
+// SHIP VARIABLES BLOCK --------------------------------------------------------
+set th to 0.
+set v0 to 0.
+local enThrust is 0.
+local engISP is 0.
+lock v0 to ship:verticalspeed.
+lock steering to -ship:velocity:surface.
+lock v1 to abs(ship:groundspeed).
+lock maxa to maxthrust/mass.
+lock maxtwr to maxa/g.
+lock shipLatLang to ship:geoposition.
+lock surfElev to shipLatLang:terrainheight.
+lock altRadar to altitude-surfElev.
+lock v to ship:velocity:surface:mag.
+
+ship_stats().
+set s_DV to stageDV.
+
+
+
+core:part:getmodule("kosProcessor"):doevent("open terminal").
+
+// lOOP BLOCK ------------------------------------------------------------------
+
+
+
+until status = "landed"
+{
+  impact().
+  imp_loc1().
+  pr_slope().
+  // Print "Now I'm here              " at (5,15).
+  set adv_altRadar to altitude - body:geopositionof(imp_loc1()):terrainheight.
+  on ag5 {lock steering to up.}
+  on ag4 {lock steering to - ship:velocity:surface.}
+  if V0<0
+  {
+    if adv_altRadar > 500
+    {
+
+      if BurnT/Ti > 1
+      {
+
+        lock th to max(0, min((BurnT/ Ti), 1)).
+
+      }
+      else
+      {
+        lock th to 0.
+      }
+
+    }
+    if 40 < altRadar and adv_altRadar < 500
+    {
+      lock steering to -ship:velocity:surface.
+      if ship:groundspeed > 5
+      {
+        lock th to max(0, min((BurnT/ Ti), 1)).
+        print "Ground speed > 5           " at (5,19).
+        print "adv_altRadar: " + adv_altRadar at (5,20).
+      }
+      else
+      {
+        hover_pid(-15).
+        lock th to min(pid:update(time:seconds, ship:verticalspeed) / cos(vang(up:vector, ship:facing:forevector)),1).
+        print "Ground speed < 5           " at (5,19).
+        print "altRadar: " + altRadar at (5,20).
+      }
+      wait 0.1.
+      print "40 < alt <500                        " at (5,15).
+    }
+    if adv_altRadar < 40
+    {
+      print "< 40                       " at (5,15).
+      if pr_slope() > 5
+      {
+        hover_pid(20).
+        lock th to min(pid:update(time:seconds, altRadar) / cos(vang(up:vector, ship:facing:forevector)),1).
+        if groundspeed < 10{
+          lock steering to lookdirup(up:vector * g + normal-2*velocity:surface:normalized, ship:facing:topvector).
+        } else{
+          lock steering to lookdirup(up:vector, ship:facing:topvector).
+        }
+        wait 0.1.
+        print cos(vang(up:vector, ship:facing:forevector)) at (5,16).
+        print "pid output: " + pid:output at (5,17).
+        print "I'm doing some weird shit 2 " at (5,19).
+      }
+      else
+      {
+
+        hover_pid(-5).
+        lock th to min(pid:update(time:seconds, ship:verticalspeed) / cos(vang(up:vector, ship:facing:forevector)),1).
+        print "<40 - 2                              " at (5,15).
+      }
+      if adv_altRadar < 20 {
+        lock th to min(pid:update(time:seconds, ship:verticalspeed) / cos(vang(up:vector, ship:facing:forevector)),1).
+        if ship:groundspeed > 3
+        {
+          hover_pid(0).
+          lock steering to up:vector-ship:velocity:surface:normalized.
+          print "I'm killing horisontal speed  " at (5,19).
+        }
+        else
+        {
+          hover_pid(-3).
+          lock steering to up:vector-ship:velocity:surface:normalized/3.
+          print "I'm finaly landing           "at (5,19).
+        }
+      }
+    }
+  }else{
+    lock th to 0.
+  }
+
+  ship_stats().
+  print "StageDV                  " + round(stageDV)+"                "at(5,6).
+  print "Burn time:               "+ round(BurnT,2) + "              " at (5,7).
+  print "Impact in:               "+ round(Ti,2) +     "              " at (5,8).
+  Print "Throttle:                " + round(th, 2)+"                  " at (5,9).
+  print "Impact slope:            " +  round(pr_slope(),1) +"              "at (5,10).
+  // Print "Burn at:                     "+  +"              " at (5,10).
+  LOWHUD(round(BurnT),round(Ti)).
+
+
+  lock throttle to th.
+}
+// FINAL BLOCK -----------------------------------------------------------------
+lock steering to up.
+SET SHIP:CONTROL:PILOTMAINTHROTTLE TO 0.
+ship_stats().
+set stageDV_left to stageDV.
+clearscreen.
+print "Looks landed to me." at (3,2).
+Print "Used deltaV: "+ round((s_DV - stageDV_left),1) at (3,3).
+
+sas on.
+unlock steering.
+clearvecdraws().

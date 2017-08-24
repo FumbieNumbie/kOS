@@ -17,23 +17,25 @@
 // copypath("PID.ks", "1:/PID").
 // copypath("connection.ks", "1:/connection").
 switch to 1.
+clearscreen.
 runpath("0:/library/main_functions.ks").
 
 
 
 set ScriptList to list(
-  "test.ks",
-  "launch.ks",
-  "aponode.ks",
-  "perinode.ks",
-  "exenode.ks",
-  "land.ks",
-  "circle.ks",
-  "warpfor.ks",
-  "go.ks",
-  "connection.ks",
-  "delete_all.ks").
+  "test",
+  "land",
+  "launch",
+  "aponode",
+  "perinode",
+  "exenode",
+  "circle",
+  "warpfor",
+  "transfer",
+  "deleteall").
 for f in ScriptList
 {
   download(f).
 }
+createdir("1:/library").
+copypath("0:/library/functions.ks", "1:/library/functions.ks").
