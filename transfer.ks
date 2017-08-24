@@ -34,7 +34,7 @@ until done{
       nd(dT, deltaV).
       set dT to dT + 20.
       wait 0.01.
-      print nextnode:orbit:transition at (4,4).
+      print "Next trajectory state: " + nextnode:orbit:transition at (4,4).
     } else {
       set deltaV to deltaV + ddv.
       set dT to 50.
@@ -60,10 +60,9 @@ runpath("1:/warpfor.ks",orbit:nextpatcheta).
 wait 10.
 lock steering to prograde+r(0,-90,0).
 wait 10.
-until periapsis <30000{
-  lock throttle to 0.1.
-}
+lock throttle to 0.1.
+wait until periapsis < 14000.
 unlock steering.
 unlock throttle.
 SET SHIP:CONTROL:PILOTMAINTHROTTLE TO 0.
-runpath("1:/circle.ks", 0).
+// runpath("1:/circle.ks", 0).

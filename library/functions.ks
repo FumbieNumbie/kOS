@@ -27,79 +27,76 @@ lock v to ship:velocity:surface:mag.
 
 // FUNCTION BLOCK --------------------------------------------------------------
 
-//Ship's deltaV.
+function unrotate {
+  parameter vec. if vec:typename <> "Vector" set vec to vec:vector.
+  return lookdirup(vec, ship:facing:topvector).
+}
 
-function ship_stats
+function fuelfunction{
+	local Fmass is 0.
+	for res in stage:resources{
+		if res:amount>0 and res:name <> "ElectricCharge" and res:name <> "Monopropellant" {
+			set Fmass to Fmass + res:amount*res:density.
+		}
+	}
+	return Fmass.
+}
+
+function shipISP
 {
   local enThrust is 0.
   local engISP is 0.
   list engines in engineList.
   for eng in engineList
   {
-    set enThrust to enThrust + eng:maxthrust / max(1,maxthrust) * eng:thrust.
-    lock acc to eng:thrust/mass.
     set engISP to engISP + eng:maxthrust / maxthrust * eng:isp. //avarage ISP For all engines
   }
-  set fuelmass to (stage:LIQUIDFUEL+stage:oxidizer)*0.005.
-  set stageDV to 9.80665*engISP * ln(ship:mass / (ship:mass - fuelmass)).
-  return acc.
-  return enThrust.
   return engISP.
-  return stageDV.
 }
+
 function availtwr {
-  return ship:availablethrust / (ship:mass * g()).
+  return ship:availablethrust / ship:mass / g().
 }
-
-
-function HUD
-{
-  parameter text1.
-  parameter text2.
-  hudtext(text1+"|"+text2, 1, 2, 30, rgba(60,190,200,0.7),false).
-}
-
-function LOWHUD
-{
-  parameter text1.
-  parameter text2.
-  hudtext(text1+"|"+text2, 1, 2, 30, rgba(60,190,200,0.7),false).
-}
-
-
 
 
 function Impact
 {
-  set Ti to  (v0 + sqrt(v0*v0 + 2*altRadar*downwardAcceleration))/downwardAcceleration. //Impact time
-  Return Ti.
+  Return  (v0 + sqrt(v0*v0 + 2*altRadar*downwardAcceleration))/downwardAcceleration. //Impact time
 }
 
-function Real_impact_time{
-  local Tir to (v0 + sqrt(v0*v0 + 2*adv_altRadar*downwardAcceleration))/downwardAcceleration.
-  return Tir.
-}
-function Real_burn_time{
-  set impact_vert_speed to abs(v0) + Ti*downwardAcceleration.
-  set impact_speed to abs(ship:verticalspeed)+Sqrt(impact_vert_speed^2 + V1^2).
-  set BurnT to impact_speed/(maxa).
-  RETURN BurnT.
-}
+
+lock Real_impact_time to (v0 + sqrt(v0*v0 + 2*adv_altRadar*downwardAcceleration))/downwardAcceleration.
+
+lock Real_burn_time to v/(maxa).
+
+lock burnDist to Real_burn_time*maxa. // Maximum distance that will be covered while burning.
+
 
 //Impact location prediction----------------------------------------------------
-function imp_loc1
-{
-  Impact().
-  set impact_loc to ship:position + ship:velocity:surface*Ti.
-  return impact_loc.
-}
+set impact_loc to ship:position.
+set impact_geoposition to body:geopositionof(impact_loc).
+// if altRadar>20
+// {
+//
+//   if ADDONS:TR:AVAILABLE
+//   {
+//     lock impact_loc to addons:tr:impactpos:position.
+//     lock impact_geoposition to addons:tr:impactpos.
+//   }
+// }
+// else{
+  lock impact_loc to ship:position + ship:velocity:surface * impact().
+  lock impact_geoposition to body:geopositionof(impact_loc).
+// }
+
+
 //Slope in the predicted position-----------------------------------------------
 function slope
 {
   local east is vcrs(north:vector, up:vector).
-  local a is body:geopositionof(impact_loc + 5 * north:vector).
-  local b is body:geopositionof(impact_loc - 5 * north:vector + 5 * east).
-  local c is body:geopositionof(impact_loc - 5 * north:vector - 5 * east).
+  local a is body:geopositionof(impact_loc + 7 * north:vector).
+  local b is body:geopositionof(impact_loc - 7 * north:vector + 7 * east).
+  local c is body:geopositionof(impact_loc - 7 * north:vector - 7 * east).
   local a_vec is a:altitudeposition(a:terrainheight).
   local b_vec is b:altitudeposition(b:terrainheight).
   local c_vec is c:altitudeposition(c:terrainheight).
@@ -115,7 +112,7 @@ function slope
                         up:vector,
                         red,"",1,true).
   set normal to vcrs(c_vec - a_vec, b_vec - a_vec).
-  set impact_geoposition to body:geopositionof(impact_loc).
+
   set visual_normal to vecdraw(impact_geoposition:ALTITUDEPOSITION(impact_geoposition:TERRAINHEIGHT),
                               normal,
                               RGBA(0,150,80,0.7),"",10,true).

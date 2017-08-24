@@ -1,3 +1,5 @@
+set terminal:WIDTH to 105.
+set terminal:HEIGHT to 11.
 declare parameter angle.
 declare parameter distance.
 declare parameter speed.
@@ -18,14 +20,14 @@ vecdraw(v(0,0,0),
         0.05).
 lock vec_angle to vang(ship:facing:vector,dir).
 
-set waypoint1 to body:geopositionof(ship:position+dir:normalized*distance).
+set waypoint1 to body:geopositionof(ship:position-dir:normalized*distance).
 print waypoint1 at(5,1).
 
 until done
 {
 	if round(waypoint1:distance)>50
 	{
-		lock wheelsteering to alpha.
+		lock wheelsteering to waypoint1.
 		if velocity:surface:mag<speed
 		{
 			if vec_angle >20 and ship:verticalspeed < -1
@@ -39,7 +41,7 @@ until done
 				set runmode to "Accelerating        ".
 				lock wheelthrottle to 1.
 				brakes off.
-			// }
+			}
 		}
 		else
 		{

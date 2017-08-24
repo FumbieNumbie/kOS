@@ -1,8 +1,21 @@
 // execute maneuver node
 set node1 to nextnode.
+set terminal:WIDTH to 51.
 clearscreen.
 print "T+" + round(missiontime) + " Node in: " + round(node1:eta) + ", DeltaV: " + round(node1:deltav:mag) at (5,5).
 set engISP to 0.
+//Calculating the mass of the fuel regardless of the fuel type.
+// This does not account for some non-fuel resources.
+function fuelfunction{
+	local Fmass is 0.
+	for res in stage:resources{
+		if res:amount>0 and res:name <> "ElectricCharge" and res:name <> "Monopropellant" {
+			set Fmass to Fmass + res:amount*res:density.
+		}
+	}
+	return Fmass.
+}
+//
 function calculations{
 	list engines in engineList.
 	for eng in engineList
@@ -12,8 +25,8 @@ function calculations{
 	}
 	// log "engISP: " + engISP to log.txt.
 	set g to 9.80665.
-	set fuelmass to (stage:LIQUIDFUEL+stage:oxidizer)*0.005.
-	set stageDV to g*engISP * ln(ship:mass / (ship:mass - fuelmass)). //calculating stage delta V.
+
+	set stageDV to g*engISP * ln(ship:mass / (ship:mass - fuelfunction())). //calculating stage delta V.
 	set dm to ship:mass-ship:mass/constant:e^(node1:deltav:mag/(g*engISP)).//this is derived from the formula above,
 	// but in this case for deltaV of the node, not the whole stage.
 	set massFlowRate to maxthrust / (g*engISP).     // how fast I'm loosing mass via throwing fuel away.
@@ -25,7 +38,7 @@ if stageDV/node1:deltaV:mag <0.5{
 		calculations().
 }
 sas off.
-
+set stagecount to 0.
 set tset to 0.
 lock throttle to tset.
 
@@ -56,13 +69,7 @@ until done
 	lock steering to node1.
 	set maxa to maxthrust/mass+0.001.
 	set VecAngle to vang(ship:facing:forevector,nextnode:deltav).
-	for eng in engineList{
-	if eng:flameout = true
-	{
-		stage.
-		break.
-	}
-	}
+
 	if VecAngle > 10 and node1:deltav:mag < 20{
 		set tset to 0.
 	}else{
@@ -81,18 +88,20 @@ until done
 	for eng in engineList
 	if eng:flameout
 	{
-		stage.
-		break.
+		if stagecount<8{
+			stage.
+			break.
+			set stagecount to stagecount + 1.
+		}
 	}
 	lock throttle to tset.
 }
 unlock steering.
 clearscreen.
-set fuelmass to (stage:LIQUIDFUEL+stage:oxidizer)*0.005.
-set stageDV to g*engISP * ln(ship:mass / (ship:mass - fuelmass)).
-print "Remaining dV: " + round(stageDV,2) at (5,30).
+fuelfunction().
+set stageDV to g*engISP * ln(ship:mass / (ship:mass - fuelfunction())).
+print "Remaining dV: " + round(stageDV,2) at (5,20).
 print "T+" + round(missiontime) + " Apoapsis: " + round(apoapsis/1000,2) + "km, periapsis: " + round(periapsis/1000,2) + "km".
-print "T+" + round(missiontime) + " Fuel after burn: " + round(stage:liquidfuel).
 wait 1.
 remove node1.
 SET SHIP:CONTROL:PILOTMAINTHROTTLE TO 0.

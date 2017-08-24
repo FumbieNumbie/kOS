@@ -37,3 +37,5 @@ for f in ScriptList
 {
   download(f).
 }
+createdir("1:/library").
+copypath("0:/library/functions.ks", "1:/library/functions.ks").
